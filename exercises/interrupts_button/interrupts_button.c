@@ -36,7 +36,6 @@ void update_display () {
 
 bool timer_function(struct repeating_timer *t)
 {
-    update_display();
     if (count == 0)
     {   
         interval = false;
@@ -88,8 +87,10 @@ int main() {
 
         if(gpio_get(BUTTON_B) == 0 && interval == true) {
             count_pressed++;
-            update_display();
+            sleep_ms(40);
         }
+
+        update_display();
 
         sleep_ms(50);
     }
